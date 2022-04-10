@@ -1,0 +1,21 @@
+services:
+  httpd:
+    image: latest
+    ports:
+      - "127.0.0.1:80:80"
+  mysql:
+    image: latest
+    environment:
+      MYSQL_DATABASE: testdb
+      MYSQL_PASSWORD: test_pass
+      MYSQL_ROOT_PASSWORD: root_root
+      MYSQL_USER: test_user
+    volumes:
+    - "./databases/mysqldb:/var/lib/mysqldb"
+  phpmyadmin:
+    image: latest
+    environment:
+      PMA_HOST: testdb
+      PMA_PASSWORD: test_pass
+      PMA_USER: test_user
+version: "3.8"
