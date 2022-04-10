@@ -1,9 +1,0 @@
-version: "3.8"
-
-services:
-
-  httpd:
-    image: latest
-  ports:
-  - 127.0.0.1:80:80
-  
