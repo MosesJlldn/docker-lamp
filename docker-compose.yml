@@ -1,21 +1,26 @@
+version: "3.8"
+
 services:
-  httpd:
-    image: latest
+
+  php:
+    image: php:8.1.4-apache
     ports:
       - "127.0.0.1:80:80"
+    volumes:
+      - ./app:/var/www/html
+
   mysql:
-    image: latest
+    image: mysql:latest
     environment:
       MYSQL_DATABASE: testdb
       MYSQL_PASSWORD: test_pass
       MYSQL_ROOT_PASSWORD: root_root
       MYSQL_USER: test_user
     volumes:
-    - "./databases/mysqldb:/var/lib/mysqldb"
+      - "./databases/mysqldb:/var/lib/mysqldb"
   phpmyadmin:
-    image: latest
+    image: phpmyadmin:latest
     environment:
       PMA_HOST: testdb
       PMA_PASSWORD: test_pass
       PMA_USER: test_user
-version: "3.8"
